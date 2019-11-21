@@ -1,17 +1,23 @@
-import {Component} from '@angular/core';
-
-import {phrases} from '../phrases';
+import { Component, OnInit } from '@angular/core';
+import { phrases } from '../phrases'
 
 @Component({
-    selector: 'speech-button',
-    templateUrl: './speech-button.component.html',
-    styleUrls: ['./speech-button.component.sass']
+  selector: 'app-speech-button',
+  templateUrl: './speech-button.component.html',
+  styleUrls: ['./speech-button.component.scss']
 })
+export class SpeechButtonComponent implements OnInit {
 
-export class SpeechButtonComponent{
-    phrases = phrases;
+  phrases = phrases;
+  clickMessage = "";
 
-    share() {
-        window.alert('Phrase spoken!');
-    }
+  constructor() { }
+
+  ngOnInit() {
+  }
+  
+  onClickMe() {
+    this.clickMessage = "Phrase spoken!";
+  }
+
 }

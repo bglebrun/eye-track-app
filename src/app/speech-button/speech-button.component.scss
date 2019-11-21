@@ -1,0 +1,15 @@
+@import "~compass-mixins/lib/compass/css3";
+
+@mixin border-radius($radius) {
+-webkit-border-radius: $radius;
+-moz-border-radius: $radius;
+-ms-border-radius: $radius;
+border-radius: $radius;
+}
+
+.box { 
+@include border-radius(5px); // apply the mixin
+background-color:olive;
+color:white;
+padding:10px;
+}
