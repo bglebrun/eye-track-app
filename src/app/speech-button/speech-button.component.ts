@@ -12,19 +12,23 @@ export class SpeechButtonComponent implements OnInit {
 
   phrases = phrases;
   clickMessage = "";
+  buttonLabel = "";
 
   constructor() { }
 
   ngOnInit() {
+    this.buttonLabel = this.button;
   }
   
   onClickMe() {
     this.clickMessage = "Phrase spoken!";
+    this.playAudio();
+    this.clickMessage = "";
   }
 
   playAudio(){
     let audio = new Audio();
-    audio.src = './audio_sample.mp3';
+    audio.src = this.buttonLabel + '.mp3';
     audio.load();
     audio.play();
   }
