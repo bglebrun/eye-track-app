@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { phrases } from '../phrases'
 
 @Component({
@@ -7,6 +7,8 @@ import { phrases } from '../phrases'
   styleUrls: ['./speech-button.component.scss']
 })
 export class SpeechButtonComponent implements OnInit {
+
+  @Input() button: string;
 
   phrases = phrases;
   clickMessage = "";
@@ -18,6 +20,13 @@ export class SpeechButtonComponent implements OnInit {
   
   onClickMe() {
     this.clickMessage = "Phrase spoken!";
+  }
+
+  playAudio(){
+    let audio = new Audio();
+    audio.src = './audio_sample.mp3';
+    audio.load();
+    audio.play();
   }
 
 }
