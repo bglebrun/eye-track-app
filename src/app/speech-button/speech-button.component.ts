@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { phrases } from '../phrases'
 
 @Component({
   selector: 'app-speech-button',
@@ -10,25 +9,25 @@ export class SpeechButtonComponent implements OnInit {
 
   @Input() button: string;
 
-  phrases = phrases;
-  clickMessage = "";
-  buttonLabel = "";
+  displayString: string;
+  
 
   constructor() { }
 
-  ngOnInit() {
-    this.buttonLabel = this.button;
+  ngOnInit() {  
+    // Find and replace underscores with spaces for display
+    var re = /_/gi;
+    this.displayString = this.button.replace(re,' ');
   }
   
   onClickMe() {
-    this.clickMessage = "Phrase spoken!";
     this.playAudio();
-    this.clickMessage = "";
   }
+
 
   playAudio(){
     let audio = new Audio();
-    audio.src = this.buttonLabel + '.mp3';
+    audio.src = '../../assets/audio/' + this.button + '.m4a';
     audio.load();
     audio.play();
   }
