@@ -1,0 +1,12 @@
+@import "~compass-mixins/lib/compass/css3";
+
+.col {
+    float: left;
+    width: 30%;
+    padding: 15px;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
